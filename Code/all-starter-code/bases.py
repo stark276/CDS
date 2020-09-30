@@ -20,14 +20,14 @@ def decode(digits, base):
     for i in range(len(digits)):
         base_result = int(digits[i])*base**i
         sum += base_result
-    print(sum)
+    return sum
     # TODO: Decode digits from binary (base 2)
-    sum = 0
-    digits = digits[::-1]
-    for i in range(len(digits)):
-        base_result = int(digits[i])*base**i
-        sum += base_result
-    print(sum)
+    # sum = 0
+    # digits = digits[::-1]
+    # for i in range(len(digits)):
+    #     base_result = int(digits[i])*base**i
+    #     sum += base_result
+    # print(sum)
     # ...
     # TODO: Decode digits from hexadecimal (base 16)
     # ...
@@ -41,10 +41,24 @@ def encode(number, base):
     base: int -- base to convert to
     return: str -- string representation of number (in given base)"""
     # Handle up to base 36 [0-9a-z]
-    assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
+    # assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
     # Handle unsigned numbers only for now
-    assert number >= 0, 'number is negative: {}'.format(number)
-    
+    # assert number >= 0, 'number is negative: {}'.format(number)
+
+
+    ''' loop to the repeated division, stop when is none
+        get the divisor and remainder
+        save the remainders
+        get the reversed list of remainders
+    '''
+    result = " "
+    while number is not 0:
+        remainder = number % base
+        number = number // base
+        result += str(remainder)
+    return result[::-1]   
+        
+
     # TODO: Encode number in binary (base 2)
     # ...
     # TODO: Encode number in hexadecimal (base 16)
@@ -60,8 +74,8 @@ def convert(digits, base1, base2):
     base2: int -- base to convert to
     return: str -- string representation of number (in base2)"""
     # Handle up to base 36 [0-9a-z]
-    assert 2 <= base1 <= 36, 'base1 is out of range: {}'.format(base1)
-    assert 2 <= base2 <= 36, 'base2 is out of range: {}'.format(base2)
+    # assert 2 <= base1 <= 36, 'base1 is out of range: {}'.format(base1)
+    # assert 2 <= base2 <= 36, 'base2 is out of range: {}'.format(base2)
     # TODO: Convert digits from base 2 to base 16 (and vice versa)
     # ...
     # TODO: Convert digits from base 2 to base 10 (and vice versa)
@@ -70,6 +84,9 @@ def convert(digits, base1, base2):
     # ...
     # TODO: Convert digits from any base to any base (2 up to 36)
     # ...
+    base10 = decode(digits, base1) #it gives us decimal number
+    result = encode(base10, base2)
+    return result
 
 
 def main():
@@ -89,4 +106,7 @@ def main():
 
 
 # if __name__ == '__main__':
-decode("101", 2)
+# decode("101", 2)
+# encode(5, 2)
+print(convert("101", 2, 10))
+# print(encode(64206, 10)).

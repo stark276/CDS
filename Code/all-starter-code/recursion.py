@@ -13,6 +13,11 @@ def factorial(n):
 
 
 def factorial_iterative(n):
+    product = 1
+    for i in range(1,n+1):
+        product = product * i
+    return product
+
     # TODO: implement the factorial function iteratively here
     pass
     # once implemented, change factorial (above) to call factorial_iterative
@@ -42,3 +47,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+# print(factorial_iterative(5))

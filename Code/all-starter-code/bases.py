@@ -108,5 +108,5 @@ def main():
 # if __name__ == '__main__':
 # decode("101", 2)
 # encode(5, 2)
-print(convert("101", 2, 10))
+# print(convert("101", 2, 10))
 # print(encode(64206, 10)).

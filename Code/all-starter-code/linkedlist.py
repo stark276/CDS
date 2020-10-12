@@ -79,6 +79,14 @@ class LinkedList(object):
         if not (0 <= index < self.size):
             raise ValueError('List index out of range: {}'.format(index))
         # TODO: Find the node at the given index and return its data
+        node_count = 0
+        node = self.head
+        while node is not None:
+            if index == node_count:
+                return node.data
+            else:
+                node_count += 1
+                node = node.next
 
     def insert_at_index(self, index, item):
         """Insert the given item at the given index in this linked list, or
@@ -89,6 +97,21 @@ class LinkedList(object):
         if not (0 <= index <= self.size):
             raise ValueError('List index out of range: {}'.format(index))
         # TODO: Find the node before the given index and insert item after it
+        new_node = Node(item)
+        if self.is_empty() or index == 0:
+            self.prepend(item)
+        elif index == self.size:
+            self.append(item)
+        else:
+            current_node = self.head
+            i = 0
+            while i < index:
+                current_node = current_node.next
+                i += 1
+
+            new_node.next = current_node
+            current_node = new_node
+            self.size += 1
 
     def append(self, item):
         """Insert the given item at the tail of this linked list.
@@ -138,14 +161,14 @@ class LinkedList(object):
         # We never found data satisfying quality, but have to return something
         return None  # Constant time to return None
 
-    def replace(self, old_item, new_item):
-        """Replace the given old_item in this linked list with given new_item
-        using the same node, or raise ValueError if old_item is not found.
-        Best case running time: ??? under what conditions? [TODO]
-        Worst case running time: ??? under what conditions? [TODO]"""
-        # TODO: Find the node containing the given old_item and replace its
-        # data with new_item, without creating a new node object
-        pass
+    # def replace(self, old_item, new_item):
+    #     """Replace the given old_item in this linked list with given new_item
+    #     using the same node, or raise ValueError if old_item is not found.
+    #     Best case running time: ??? under what conditions? [TODO]
+    #     Worst case running time: ??? under what conditions? [TODO]"""
+    #     # TODO: Find the node containing the given old_item and replace its
+    #     # data with new_item, without creating a new node object
+    #     pass
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.

@@ -19,7 +19,7 @@ def factorial_iterative(n):
     return product
 
     # TODO: implement the factorial function iteratively here
-    pass
+    
     # once implemented, change factorial (above) to call factorial_iterative
     # to verify that your iterative implementation passes all tests
 
@@ -47,4 +47,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-# print(factorial_iterative(5))
+# print(factorial_iterative(10))

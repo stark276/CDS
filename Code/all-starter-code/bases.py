@@ -105,7 +105,8 @@ def main():
         print('Converts digits from base1 to base2')
 
 
-# if __name__ == '__main__':
+if __name__ == '__main__':
+    main()
 # decode("101", 2)
 # encode(5, 2)
 # print(convert("101", 2, 10))
